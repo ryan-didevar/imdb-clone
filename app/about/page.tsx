@@ -1,6 +1,6 @@
 const AboutPage = () => {
   return (
-    <div className="max-w-6xl mx-auto space-y-6">
+    <div className="max-w-6xl mx-auto space-y-6 px-4 md:px-0">
       <h1 className="text-amber-600 text-2xl font-medium">About</h1>
       <p className="text-justify leading-loose">
         Hi, I’m Ryan Didevar, and this is my personal IMDb clone. I created this

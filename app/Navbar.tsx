@@ -9,13 +9,13 @@ const Navbar = () => {
     { label: "About", href: "/about", icon: <BsFillInfoCircleFill /> },
   ];
   return (
-    <nav className="flex justify-between items-center py-6 px-2 sm:mx-auto max-w-6xl">
-      <div className="flex gap-1 lg:gap-2 items-center">
+    <nav className="flex justify-between items-center px-4 md:px-0 py-6 sm:mx-auto max-w-6xl">
+      <div className="flex gap-1 lg:space-x-6 items-center">
         {links.map((link) => (
           <Link
             key={link.label}
             href={link.href}
-            className="flex gap-2 items-center hover:text-amber-500"
+            className="flex items-center hover:text-amber-500"
           >
             <div className="inline sm:hidden text-2xl mx-4">{link.icon}</div>
             <p className="sm:inline hidden text-sm my-2">
