@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ReactElement } from "react";
 import { AiFillHome } from "react-icons/ai";
 import { BsFillInfoCircleFill } from "react-icons/bs";
+import BtnSwitchTheme from "./components/BtnSwitchTheme";
 const Navbar = () => {
   const links: { label: string; href: string; icon?: ReactElement }[] = [
     { label: "Home", href: "/", icon: <AiFillHome /> },
@@ -23,7 +24,8 @@ const Navbar = () => {
           </Link>
         ))}
       </div>
-      <div>
+      <div className="flex space-x-5 items-center">
+        <BtnSwitchTheme />
         <Link href="/">
           <h2 className="flex gap-1 items-center">
             <span className="px-2 py-1 bg-amber-500 rounded-lg font-bold ">
