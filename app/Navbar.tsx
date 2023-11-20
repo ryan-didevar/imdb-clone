@@ -9,7 +9,7 @@ const Navbar = () => {
     { label: "About", href: "/about", icon: <BsFillInfoCircleFill /> },
   ];
   return (
-    <nav className="flex justify-between items-center my-6 mx-2 sm:mx-auto max-w-6xl">
+    <nav className="flex justify-between items-center py-6 px-2 sm:mx-auto max-w-6xl">
       <div className="flex gap-1 lg:gap-2 items-center">
         {links.map((link) => (
           <Link
