@@ -1,5 +1,4 @@
-import Menu from "./Menu";
-import Navbar from "./Navbar";
+import { Menu, Navbar } from "./components";
 
 const Header = () => {
   return (

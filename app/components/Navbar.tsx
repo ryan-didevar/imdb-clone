@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ReactElement } from "react";
 import { AiFillHome } from "react-icons/ai";
 import { BsFillInfoCircleFill } from "react-icons/bs";
-import BtnSwitchTheme from "./components/BtnSwitchTheme";
+import BtnSwitchTheme from "./BtnSwitchTheme";
 const Navbar = () => {
   const links: { label: string; href: string; icon?: ReactElement }[] = [
     { label: "Home", href: "/", icon: <AiFillHome /> },
