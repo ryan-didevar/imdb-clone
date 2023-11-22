@@ -32,9 +32,7 @@ const Movies = () => {
     retry: 3,
   });
   const moviesList: Movie[] = movies?.data.results;
-  if (!moviesList) return <></>;
   if (isLoading) return <>loading...</>;
-  if (error) return <>error occurred</>;
   return (
     <div>
       {moviesList.map((m) => (

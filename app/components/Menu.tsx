@@ -20,7 +20,7 @@ const Menu = () => {
               genre === link.href,
           })}
           key={link.label}
-          href={`?genre=${link.href}`}
+          href={`/?genre=${link.href}`}
         >
           {link.label}
         </Link>
