@@ -19,7 +19,15 @@ export const getMovies = async ({
     (genre === "fetchTopRated"
       ? `${type}/top_rated`
       : `trending/${type}/week`) +
-    `?api_key=${API_KEY}&language=${language}&page=${page}`;
-  const data = await axios.get(URL);
-  return data;
+    `?&language=${language}&page=${page}`;
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1YzNkNmVlYzA3OWU1NTUwZmE4NDdhMjUyNjI5NDZkOSIsInN1YiI6IjY1NWI0YjkxMDgxNmM3MDBhYmJmNjJmZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.8Jh3OaLqsayQFcYbMoIFXUhYjk200ZPp-sPutRFWpdw",
+    },
+  };
+
+  return await axios.get(URL, options);
 };

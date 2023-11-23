@@ -2,7 +2,8 @@
 import { useSearchParams } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { getMovies } from "./utils/getData";
-interface Movie {
+import MovieCard from "./components/MovieCard";
+export interface MovieProps {
   adult: boolean;
   backdrop_path: string;
   id: number;
@@ -13,7 +14,8 @@ interface Movie {
   popularity: number;
   poster_path: string;
   release_date: string;
-  title: string;
+  title?: string;
+  name?: string;
   video: boolean;
   vote_average: number;
   vote_count: number;
@@ -31,12 +33,13 @@ const Movies = () => {
     staleTime: 60 * 1000, //60s
     retry: 3,
   });
-  const moviesList: Movie[] = movies?.data.results;
-  if (isLoading) return <>loading...</>;
+  const moviesList: MovieProps[] = movies?.data.results;
+  if (isLoading)
+    return <span className="loading loading-spinner loading-md"></span>;
   return (
-    <div>
-      {moviesList.map((m) => (
-        <p key={m.id}>{m.title}</p>
+    <div className="sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 max-w-6xl mx-auto py-4">
+      {moviesList.map((movie) => (
+        <MovieCard key={movie.id} movie={movie} />
       ))}
     </div>
   );
