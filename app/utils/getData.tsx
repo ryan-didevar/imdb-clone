@@ -1,10 +1,10 @@
 import axios from "axios";
-const API_KEY = process.env.TMDB_API_KEY;
 interface Props {
   type: "movie" | "tv";
   language?: string;
   page?: number;
-  genre: string;
+  genre?: string;
+  query?: string;
 }
 export const baseUrl = "https://api.themoviedb.org/3/";
 
@@ -13,25 +13,25 @@ export const getMovies = async ({
   language = "en-US",
   page = 1,
   genre,
+  query,
 }: Props) => {
-  console.log(API_KEY);
-  const URL =
-    baseUrl +
-    (genre === "fetchTopRated"
+  const whatToFetch =
+    genre === "fetchTopRated"
       ? `${type}/top_rated`
-      : `trending/${type}/week`) +
-    `?language=${language}&page=${page}`;
-  console.log(URL);
+      : genre === "fetchTrending"
+      ? `trending/${type}/week`
+      : genre === "search" && `search/${type}`;
+  const URL = baseUrl + whatToFetch + `?language=${language}&page=${page}`;
   const options = {
     method: "GET",
+    params: {
+      query,
+    },
     headers: {
       accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1YzNkNmVlYzA3OWU1NTUwZmE4NDdhMjUyNjI5NDZkOSIsInN1YiI6IjY1NWI0YjkxMDgxNmM3MDBhYmJmNjJmZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.8Jh3OaLqsayQFcYbMoIFXUhYjk200ZPp-sPutRFWpdw",
+      Authorization: process.env.ACCESS_TOKEN_KEY,
     },
   };
   const data = await axios.get(URL, options);
-  console.log(data);
-
   return data;
 };

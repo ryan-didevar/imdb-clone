@@ -23,17 +23,14 @@ export interface MovieProps {
 const Movies = () => {
   const searchParams = useSearchParams();
   const genre = searchParams.get("genre") || "fetchTrending";
-  const {
-    data: movies,
-    error,
-    isLoading,
-  } = useQuery({
+  const { data: movies } = useQuery({
     queryKey: [genre === "fetchTrending" ? "trending" : "top_rated"],
     queryFn: () => getMovies({ type: "movie", genre }),
     staleTime: 60 * 1000, //60s
     retry: 3,
   });
   const moviesList: MovieProps[] = movies?.data.results;
+  if (!moviesList) return <></>;
 
   return (
     <div className="sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 max-w-6xl mx-auto py-4">

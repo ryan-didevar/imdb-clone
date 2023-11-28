@@ -25,6 +25,8 @@ const MovieCard = ({ movie }: Props) => {
             "sm:rounded-t-lg group-hover:opacity-80 transition-opacity duration-200 max-h-full h-auto":
               true,
           })}
+          placeholder="blur"
+          blurDataURL="/spinner.svg"
         />
         <div className="p-2">
           <p className="line-clamp-2 text-md">{movie.overview}</p>
